@@ -15,11 +15,10 @@ import {
 const useStyles = makeStyles({
     appBarStyles: {
         backgroundColor: 'inherit',
-        color: 'inherit'
+        color: 'inherit',
       },
       title: {
         flexGrow: 1,
-        textAlign: 'center',
       },
 })
 
@@ -30,7 +29,7 @@ const Header = (props) => {
     // Theme setup
     const theme = createMuiTheme({
         palette : {
-            type: darkMode ? 'dark' : 'light'
+            type: darkMode ? 'dark' : 'light',
         }
     })
 
@@ -41,7 +40,7 @@ const Header = (props) => {
     return (
         <AppBar position="sticky" className={classes.appBarStyles}>
             <Toolbar>
-            <Typography variant="h4" className={classes.title}>
+            <Typography variant="h4" className={classes.title} color='primary'>
             Course Goals
             </Typography>
             <FormControlLabel
@@ -50,10 +49,11 @@ const Header = (props) => {
                         checked={props.darkMode}
                         onChange={addModeHandler}
                         name=""
-                        color=""
+                        color="primary"
                     />
                 }
                 label="Light/Dark"
+                
             />
             </Toolbar>
         </AppBar>

@@ -6,7 +6,10 @@ import {
    
 } from '@material-ui/core'
 
-import Header from './components/Header' // test
+// Import custom components
+import Header from './components/Header'
+import GoalList from './components/GoalList' 
+import NewGoal from './components/NewGoal'
 
 // Custom styles
 const useStyles = makeStyles((theme) => ({
@@ -22,29 +25,26 @@ const App = (props) => {
   // Theme setup
   const theme = createMuiTheme({
     palette : {
-      type: darkMode ? 'dark' : 'light'
+      type: darkMode ? 'dark' : 'light',
+      primary: {
+        main: '#64b5f6'
+      }
     }
   })
   // Goals state
-  const [courseGoals, setCourseGoals] = useState([
-    {
-      id: "cg1",
-      text: "Finish the course"
-    },
-    {
-      id: "cg2",
-      text: "Learn all about building MERN"
-    }
-  ]);
+  const [courseGoals, setCourseGoals] = useState([]);
 
   // Custom methods
   const addNewGoalHandler = (newGoal) => {
     setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));
   };
+
   return (
     <ThemeProvider theme={theme} className={classes.root}>
      <Paper style={{height:'100vh'}}>
        <Header setMode={() => setDarkMode(!darkMode)} darkMode={darkMode}/>
+       <NewGoal onAddGoal={addNewGoalHandler}/>
+       <GoalList courseGoals={courseGoals}/>    
      </Paper>
     </ThemeProvider> 
    )
